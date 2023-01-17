@@ -1,0 +1,24 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: gracefulshutdown-deployment
+  namespace: tiket-demo
+  labels:
+    app: gracefulshutdownLabel
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gracefulshutdownLabel
+  template:
+    metadata:
+      namespace: tiket-demo
+      labels:
+        app: gracefulshutdownLabel
+    spec:
+      containers:
+      - name: gracefulshutdownapi
+        image: gracefulshutdown:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080

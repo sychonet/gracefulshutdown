@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: gracefulshutdown-service
+  namespace: tiket-demo
+spec:
+  selector:
+    app: gracefulshutdownLabel
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8101
+      targetPort: 8080
