@@ -32,4 +32,9 @@ You should now be able to see the pods and service load balancer running in name
 
 After running these commands your application should be running on `http://localhost:8101`
 
+### Steps to run the test
+1. Install k6 by garafana for load testing using Docker command `docker pull grafana/k6` on your terminal.
+2. Run test by executing command `docker run --rm -i grafana/k6 run --vus 10 --duration 300s - <k6/script.js` on your terminal.
+3. Immeidately after step 2 delete pod by using command `kubectl delete pod <podname> --namespace=tiket-demo` on your terminal.
 
+If you don't find any timeouts while running the test using k6 even after deleting one pod then it proves that the application is shutting down gracefully.
